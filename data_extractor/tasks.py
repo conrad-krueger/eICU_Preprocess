@@ -400,7 +400,7 @@ def populate_root(eicu_path, task_list, splits, patients, mapper, min_records=15
     
     #To pandas
     for key in listfiles:
-        listfiles[key] = pd.DataFrame(listfiles[key])
+        listfiles[key] = pd.DataFrame(listfiles[key]).sample(frac=1)
 
     gc.collect()
     
