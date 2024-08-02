@@ -49,7 +49,7 @@ Ensure the eICU dataset CSVs are available on the disk.
 
 Use `--all` for all tasks, `--regional` to perform regional splits.
 If you want to only do a specific subset of tasks, use the corresponding flags.
-If the root directory has alreafy been fully populated, use `--skip_labeling`.
+If the root directory has already been fully populated, use `--skip_labeling`.
 
 ### Linking to root
 
