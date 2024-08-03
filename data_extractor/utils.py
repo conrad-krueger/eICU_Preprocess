@@ -145,6 +145,11 @@ def encode_cr_result(na):
     na["itemvalue"] = na["itemvalue"].replace({"normal": 0, "< 2 seconds": 0, "> 2 seconds": 1})
     return na
 
+#   Removes hands and feet data points  
+def remove_null_in_na(na):
+    mask = ~na['itemvalue'].isnull()
+    return na[mask]
+
 def read_na_table(eicu_path):
     na = dataframe_from_csv(os.path.join(eicu_path, 'nurseAssessment.csv'), index_col=False)
     na = filter_na_on_columns(na)
@@ -153,6 +158,7 @@ def read_na_table(eicu_path):
     na = item_name_selected_from_na(na, items)
     na = check_itemvalue_na(na)
     na = encode_cr_result(na)
+    na = remove_null_in_na(na)
     return na
 
 #Write the nc values of each patient into a na.csv file
